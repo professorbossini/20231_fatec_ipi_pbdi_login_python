@@ -1,5 +1,5 @@
 import psycopg
-print(psycopg)
+# print(psycopg)
 
 class Usuario:
   def __init__(self, login, senha):
@@ -22,4 +22,30 @@ def existe (usuario):
       result = cursor.fetchone()
       return result != None
 
-print(existe(Usuario('admin', 'a')))
+# u = Usuario('admin', 'fewafewfwa')
+# print(existe(u))
+#0-Sair
+#1-Login
+#2-Logoff
+def menu():
+  texto = '0-Fechar sistema\n1-Login\n2-Logoff\n'
+  usuario = None
+  opcao = int(input(texto))
+  while opcao != 0:
+    if opcao == 1:
+      login = input("Digite seu login\n")
+      senha = input("Digite sua senha\n")
+      usuario = Usuario(login, senha)
+      # expressão condicional (if/else de uma linha só)
+      print("Usuário OK!" if existe(usuario) else "Usuário NOK!")
+    elif opcao == 2:
+      usuario = None
+      print ("Logoff realizado com sucesso")
+    opcao = int(input(texto))
+  else:
+    print ("Até mais")
+
+menu()
+
+
+
